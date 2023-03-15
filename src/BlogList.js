@@ -7,7 +7,6 @@ function BlogList(props) {
                 <div className="blogPreview" key = {blog.id}>
                     <h2>{blog.title}</h2>
                     <p>By {blog.author}</p>
-                    <button onClick={() => props.handleDelete(blog.id)}> Delete Blog </button>
                 </div>
             ))}
         </div>
