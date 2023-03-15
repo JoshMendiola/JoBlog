@@ -6,6 +6,7 @@ const Home = () => {
 
     const [fav, setFav] = useState("Favorite")
     const [blogs, setBlogs] = useState(null)
+    const [blogsPending, setBlogsPending] = useState(true)
     const handleFavClick = () =>
     {
        if (fav === "Favorite")
@@ -22,7 +23,9 @@ const Home = () => {
     useEffect((() => {
         fetch(`http://localhost:8000/blogs`)
             .then(res => {return res.json()})
-            .then((response) => {setBlogs(response)})
+            .then((response) => {
+                setBlogs(response);
+                setBlogsPending(false)})
         }
     ), [])
     return (
@@ -30,6 +33,7 @@ const Home = () => {
             <h1>Homepage :)</h1>
             <p> Johmen is my {fav} artist/programmer !!</p>
             <button onClick={() => handleFavClick()}></button>
+            {blogsPending && <div>Loading...</div>}
             {blogs && <BlogList blogs={blogs}/>}
         </div>
     );
