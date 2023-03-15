@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import BlogList from "./BlogList";
 
 
 const Home = () => {
@@ -20,18 +21,23 @@ const Home = () => {
            setFav("Favorite")
        }
     }
+
+    const handleDelete = (id) =>
+    {
+        const newBlogs = blogs.filter(blog => blog.id != id)
+        setBlogs(newBlogs)
+    }
+
+    useEffect(() => {
+        console.log("use effect works")
+        }
+    )
     return (
         <div className="home">
             <h1>Homepage :)</h1>
             <p> Johmen is my {fav} artist/programmer !!</p>
             <button onClick={() => handleFavClick()}></button>
-            {blogs.map((blog) => (
-                <div className="blogPreview" key = {blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>By {blog.author}</p>
-                </div>
-            ))}
-
+            <BlogList blogs={blogs} handleDelete = {handleDelete}/>
         </div>
     );
 };
