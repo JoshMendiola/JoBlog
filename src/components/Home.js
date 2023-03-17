@@ -36,7 +36,7 @@ const Home = () => {
                 setError(null)})
             .catch(err => {
                 setBlogsPending(false)
-                setError(err.message())}
+                setError(err.message)}
             )
         }
     ), [])
@@ -45,7 +45,7 @@ const Home = () => {
             <h1>Homepage :)</h1>
             <p> Johmen is my {fav} artist/programmer !!</p>
             <button onClick={() => handleFavClick()}></button>
-            {error && <div>{error}</div>}
+            {error && <div><h1>{error}</h1></div>}
             {blogsPending && <div>Loading...</div>}
             {blogs && <BlogList blogs={blogs}/>}
         </div>
