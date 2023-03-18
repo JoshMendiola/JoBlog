@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import BlogList from "./BlogList";
+import useFetch from "../service/useFetchAll";
 
 
 const Home = () => {
 
     const [fav, setFav] = useState("Favorite")
-    const [blogs, setBlogs] = useState(null)
-    const [blogsPending, setBlogsPending] = useState(true)
-    const [error, setError] = useState(null)
+    const {data: blogs, dataPending: blogsPending, error} = useFetch('http://localhost:8000/blogs')
     const handleFavClick = () =>
     {
        if (fav === "Favorite")
@@ -20,26 +19,6 @@ const Home = () => {
        }
     }
 
-
-    useEffect((() => {
-        fetch(`http://localhost:8000/blogs`)
-            .then(res => {
-                if(!res.ok)
-                {
-                    throw Error('Could not fetch that resource!')
-                }
-                return res.json()
-            })
-            .then((response) => {
-                setBlogs(response);
-                setBlogsPending(false);
-                setError(null)})
-            .catch(err => {
-                setBlogsPending(false)
-                setError(err.message)}
-            )
-        }
-    ), [])
     return (
         <div className="home">
             <h1>Homepage :)</h1>
