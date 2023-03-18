@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const UseFetchAll = (url) => {
+const UseFetch = (url) => {
     const [data, setData] = useState(null)
     const [dataPending, setDataPending] = useState(true)
     const [error, setError] = useState(null)
@@ -28,4 +28,4 @@ const UseFetchAll = (url) => {
     return {data, dataPending, error}
 };
 
-export default UseFetchAll;
+export default UseFetch;
