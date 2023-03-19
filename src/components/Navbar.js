@@ -6,11 +6,10 @@ const Navbar = () => {
         <nav className="navbar">
             <h1>The Johmen Blog !!</h1>
             <div className="links">
-                <Link to="/"> Home </Link>
-                <Link to="/create" style={{color:"white",
+                <Link to="/login" style={{color:"white",
                     backgroundColor: "#1fb1df",
                     borderRadius: "8px"
-                }}>New Blog</Link>
+                }}>Login</Link>
             </div>
         </nav>
     );

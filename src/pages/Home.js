@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            <h1>Homepage :)</h1>
+            <h1>Home</h1>
             <p> Johmen is my {fav} artist/programmer !!</p>
             <button onClick={() => handleFavClick()}></button>
             {error && <div><h1>{error}</h1></div>}
