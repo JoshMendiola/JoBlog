@@ -12,7 +12,7 @@ const Blog = () => {
             { error && <div> {error} </div> }
             {blog && (
                 <article>
-                    <h2> {blog.title}</h2>
+                    <h1> {blog.title}</h1>
                     <p> By: {blog.author} </p>
                     <div>{blog.body}</div>
                 </article>
