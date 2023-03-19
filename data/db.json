@@ -30,7 +30,15 @@
       "title": "Cable TV",
       "author": "Johmen",
       "cover": "/images/cabletvcover.png",
+      "url": "/music/cabletv.mp3",
       "id": 1
+    },
+    {
+      "title": "Unsafe",
+      "author": "Johmen",
+      "cover": "/images/cabletvcover.png",
+      "url": "/music/Unsafe.mp3",
+      "id": 2
     }
   ]
 }

@@ -1,42 +1,47 @@
 import React, {useEffect, useRef, useState} from 'react';
-import useSound from "use-sound";
 
 
 
 const MusicPlayer = (props) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(new Audio(props.song.url));
-
-    const handlePlayButton = () =>
-    {
-        if (isPlaying) {
-            setIsPlaying(false)
-        } else {
-            setIsPlaying(true)
-        }
-    }
+    const audioRef = useRef(null);
 
 
     useEffect(() => {
-        if (isPlaying) {
-            audioRef.current.play();
-        } else {
-            audioRef.current.pause();
+        audioRef.current = new Audio(props.song.url);
+        audioRef.current.addEventListener('loadeddata', () => {
+            if (isPlaying) {
+                audioRef.current.play();
+            }
+        });
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
+        };
+    }, [props.song.url]);
+
+    const handlePlayButton = () =>
+    {
+        setIsPlaying(!isPlaying);
+    }
+
+    useEffect(() => {
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.play();
+            } else {
+                audioRef.current.pause();
+            }
         }
     }, [isPlaying]);
 
     return (
         <div className="music-player">
-            <div>
-                {!isPlaying ? (
-                    <button onClick={handlePlayButton}>
-                    </button>
-                ) : (
-                    <button onClick={handlePlayButton}>
-                    </button>
-                )}
-            </div>
+            <button onClick={handlePlayButton}>
+                {isPlaying ? "Pause" : "Play"}
+            </button>
         </div>
     );
 };
