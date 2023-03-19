@@ -151,3 +151,21 @@
 .sidebar a:hover{
   color: #1fb1df;
 }
+
+.music-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.music-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.music-preview h2 {
+  font-size: 20px;
+  color: #1fb1df;
+  margin-bottom: 8px;
+}
+
+.music-preview a {
+  text-decoration: none;
+}
