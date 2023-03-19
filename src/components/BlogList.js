@@ -8,7 +8,7 @@ function BlogList(props) {
                 <div className="blogPreview" key = {blog.id}>
                     <Link to={`/blog/${blog.id}`}>
                         <h2>{blog.title}</h2>
-                        <p>By: {blog.author}</p>
+                        <p>By {blog.author}</p>
                     </Link>
                 </div>
             ))}

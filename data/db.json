@@ -29,7 +29,7 @@
     {
       "title": "Cable TV",
       "author": "Johmen",
-      "cover": "./images/cabletvcover.png",
+      "cover": "/images/cabletvcover.png",
       "id": 1
     }
   ]

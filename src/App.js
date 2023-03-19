@@ -6,6 +6,7 @@ import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import SideBar from "./components/SideBar";
 import MusicHome from "./pages/MusicHome";
+import Music from "./pages/Music";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/create" element={<Create/>}> </Route>
                         <Route path="/blog/:id" element={<Blog/>}> </Route>
                         <Route path="/music" element={<MusicHome/>}> </Route>
+                        <Route path="/music/:id" element={<Music/>}> </Route>
                         <Route path="*" element={<NotFound/>}> </Route>
                     </Routes>
                 </div>
