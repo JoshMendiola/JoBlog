@@ -3,7 +3,7 @@ import useFetch from "../service/useFetch";
 import BlogList from "../components/BlogList";
 import MusicList from "../components/MusicList";
 
-function Music(props) {
+function MusicHome(props) {
     const {data: music, dataPending: musicPending, error} = useFetch('http://localhost:8000/music')
     return (
         <div className="music">
@@ -14,4 +14,4 @@ function Music(props) {
     );
 }
 
-export default Music;
+export default MusicHome;

@@ -5,7 +5,7 @@ import Create from "./pages/Create";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import SideBar from "./components/SideBar";
-import Music from "./pages/Music";
+import MusicHome from "./pages/MusicHome";
 
 function App() {
     return (
@@ -18,7 +18,7 @@ function App() {
                         <Route path="/" element={<Home/>}> </Route>
                         <Route path="/create" element={<Create/>}> </Route>
                         <Route path="/blog/:id" element={<Blog/>}> </Route>
-                        <Route path="/music" element={<Music/>}> </Route>
+                        <Route path="/music" element={<MusicHome/>}> </Route>
                         <Route path="*" element={<NotFound/>}> </Route>
                     </Routes>
                 </div>
