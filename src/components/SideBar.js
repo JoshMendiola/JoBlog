@@ -7,7 +7,7 @@ const SideBar = () => {
         <div className="sidebar">
             <img src={JohmenSidebar} alt="JohmenLogo" />
             <Link to="/">Home</Link>
-            <Link to="/create" >New Blog</Link>
+            <Link to="/createblog" >New Blog</Link>
             <Link to="/music" >Music</Link>
         </div>
     );

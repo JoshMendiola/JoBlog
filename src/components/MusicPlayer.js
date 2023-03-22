@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import AudioControls from "./AudioControls";
 
 
 
@@ -7,9 +8,9 @@ const MusicPlayer = (props) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 
-
     useEffect(() => {
         audioRef.current = new Audio(props.song.url);
+        //plays the audio only after it is fully loaded
         audioRef.current.addEventListener('loadeddata', () => {
             if (isPlaying) {
                 audioRef.current.play();
@@ -39,9 +40,17 @@ const MusicPlayer = (props) => {
 
     return (
         <div className="music-player">
-            <button onClick={handlePlayButton}>
-                {isPlaying ? "Pause" : "Play"}
-            </button>
+            <img src = {props.song.cover} className="music-player-song-cover"/>
+            <AudioControls
+                isPlaying={isPlaying}
+                onPlayPauseClick={setIsPlaying}
+            />
+            <div className="about-section">
+                <h2>About this song:</h2>
+                <p>
+                    {props.song.about}
+                </p>
+            </div>
         </div>
     );
 };

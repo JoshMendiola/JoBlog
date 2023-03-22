@@ -6,7 +6,7 @@ import useFetch from "../service/useFetch";
 const Home = () => {
 
     const [fav, setFav] = useState("Favorite")
-    const {data: blogs, dataPending: blogsPending, error} = useFetch('http://localhost:8000/blogs')
+    const {data: blogs, dataPending: blogsPending, error} = useFetch('http://localhost:8080/blogs')
     const handleFavClick = () =>
     {
        if (fav === "Favorite")

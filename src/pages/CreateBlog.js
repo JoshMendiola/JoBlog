@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom'
 
-const Create = () => {
+const CreateBlog = () => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [body, setBody] = useState('')
+    const [blog_id, setBlog_id] = useState(null)
+    const date = new Date().getFullYear();
     const [isPending, setIsPending] = useState(false)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const blog = {title, body, author};
+        const blog = {blog_id, title, body, author, date};
 
         setIsPending(true)
-        fetch(`http://localhost:8000/blogs`, {
+        fetch(`http://localhost:8080/blogs`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
@@ -55,4 +57,4 @@ const Create = () => {
     );
 };
 
-export default Create;
+export default CreateBlog;
