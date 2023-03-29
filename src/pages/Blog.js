@@ -5,7 +5,7 @@ import useFetchAll from "../service/useFetch";
 const Blog = () => {
     const {id} = useParams()
 
-    const {data: blog, dataPending, error} = useFetchAll('http://localhost:8000/blogs/'+id)
+    const {data: blog, dataPending, error} = useFetchAll('http://localhost:8080/blog/'+id)
     return (
         <div className="blog-details">
             { dataPending && <div>Loading...</div> }
@@ -14,6 +14,7 @@ const Blog = () => {
                 <article>
                     <h1> {blog.title}</h1>
                     <p> By: {blog.author} </p>
+                    <p> Date: {blog.date} </p>
                     <div>{blog.body}</div>
                 </article>
             )
