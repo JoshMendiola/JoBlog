@@ -6,7 +6,8 @@ const CreateBlog = () => {
     const [author, setAuthor] = useState('')
     const [body, setBody] = useState('')
     const [blog_id, setBlog_id] = useState(null)
-    const date = new Date().getFullYear();
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
     const [isPending, setIsPending] = useState(false)
     const navigate = useNavigate()
 
@@ -15,7 +16,7 @@ const CreateBlog = () => {
         const blog = {blog_id, title, body, author, date};
 
         setIsPending(true)
-        fetch(`http://localhost:8080/blogs`, {
+        fetch(`http://localhost:8080/blog`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
