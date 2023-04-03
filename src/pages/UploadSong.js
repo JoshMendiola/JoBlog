@@ -1,33 +1,27 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import usePost from "../service/usePost";
 
-const CreateBlog = () => {
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
-    const [audio, setAudio] = useState('')
-    const [song_id, setSong_id] = useState(null)
-    const [about, setAbout] = useState('')
-    const [cover, setCover] = useState('')
+const UploadSong = () => {
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [audio, setAudio] = useState('');
+    const [song_id, setSong_id] = useState(null);
+    const [about, setAbout] = useState('');
+    const [cover, setCover] = useState('');
     const today = new Date();
     const date = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
-    const [isPending, setIsPending] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const { isPending, post } = usePost('http://localhost:8080/blog', {
+        headers: { 'Content-Type': 'application/json' },
+    });
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        const song = {song_id, title, author, date, about, audio, cover};
-
-        setIsPending(true)
-        fetch(`http://localhost:8080/blog`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(song)
-        }).then(() => {
-            console.log("new song !!!");
-            setIsPending(false);
-            navigate('/');
-        })
-    }
+        e.preventDefault();
+        const song = { song_id, title, author, date, about, audio, cover };
+        post(song);
+    };
 
     return (
         <div className="create">
@@ -43,7 +37,7 @@ const CreateBlog = () => {
                 <label>Author:</label>
                 <textarea
                     required
-                    value = {author}
+                    value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                 />
                 <label>About your song: </label>
@@ -53,11 +47,15 @@ const CreateBlog = () => {
                     value={about}
                     onChange={(e) => setAbout(e.target.value)}
                 />
-                {!isPending && <button> Upload song </button>}
-                {isPending && <button disabled> Uploading...</button>}
+                {isPending && <p>Uploading song...</p>}
+                {!isPending && (
+                    <button onClick={() => post()}>
+                        Upload Song
+                    </button>
+                )}
             </form>
         </div>
     );
 };
 
-export default CreateBlog;
+export default UploadSong;

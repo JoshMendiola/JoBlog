@@ -1,30 +1,36 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UsePost from "../service/usePost";
 
 const CreateBlog = () => {
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
-    const [body, setBody] = useState('')
-    const [blog_id, setBlog_id] = useState(null)
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [body, setBody] = useState('');
+    const [blog_id, setBlog_id] = useState(null);
     const today = new Date();
     const date = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
-    const [isPending, setIsPending] = useState(false)
-    const navigate = useNavigate()
+    const [isPending, setIsPending] = useState(false);
+    const [submit, setSubmit] = useState(false);
+    const navigate = useNavigate();
+
+    const { responseData, dataPending, error } = UsePost('http://localhost:8080/blog', {
+        blog_id,
+        title,
+        author,
+        body,
+        date,
+    }, submit);
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        const blog = {blog_id, title, body, author, date};
+        e.preventDefault();
+        setIsPending(true);
+        setSubmit(true);
+    };
 
-        setIsPending(true)
-        fetch(`http://localhost:8080/blog`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(blog)
-        }).then(() => {
-            console.log("new blog :)");
-            setIsPending(false);
-            navigate('/');
-        })
+    if (!dataPending && !error && responseData) {
+        console.log('new blog :)');
+        setIsPending(false);
+        navigate('/');
     }
 
     return (
@@ -41,7 +47,7 @@ const CreateBlog = () => {
                 <label>Blog body:</label>
                 <textarea
                     required
-                    value = {body}
+                    value={body}
                     onChange={(e) => setBody(e.target.value)}
                 />
                 <label>Author:</label>
