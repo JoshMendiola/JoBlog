@@ -8,20 +8,35 @@ const UploadSong = () => {
     const [audio, setAudio] = useState('');
     const [song_id, setSong_id] = useState(null);
     const [about, setAbout] = useState('');
-    const [cover, setCover] = useState('');
+    const [cover, setCover] = useState(null);
     const today = new Date();
     const date = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
     const navigate = useNavigate();
+    const formData = new FormData();
+    const [isPending, setIsPending] = useState(false);
+    const [submit, setSubmit] = useState(false);
 
-    const { isPending, post } = usePost('http://localhost:8080/blog', {
-        headers: { 'Content-Type': 'application/json' },
-    });
+    const {responseData, dataPending, error } = usePost('http://localhost:8080/blog', {
+        formData
+    }, submit);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const song = { song_id, title, author, date, about, audio, cover };
-        post(song);
+        formData.append('cover', cover);
+        formData.append('song', JSON.stringify(song))
+        setSubmit(true)
     };
+
+    if (!dataPending && !error && responseData) {
+        console.log('new blog :)');
+        setIsPending(false);
+        navigate('/');
+    }
+
+    const handleImageChange = (e) => {
+        setCover(e.target.files)
+    }
 
     return (
         <div className="create">
@@ -47,12 +62,14 @@ const UploadSong = () => {
                     value={about}
                     onChange={(e) => setAbout(e.target.value)}
                 />
-                {isPending && <p>Uploading song...</p>}
-                {!isPending && (
-                    <button onClick={() => post()}>
-                        Upload Song
-                    </button>
-                )}
+                <label>Song cover:</label>
+                <input
+                    accept="image/"
+                    type="file"
+                    onChange={handleImageChange}
+                />
+                {!isPending && (<button>Upload song</button>)}
+                {isPending && <button disabled>Uploading song...</button>}
             </form>
         </div>
     );

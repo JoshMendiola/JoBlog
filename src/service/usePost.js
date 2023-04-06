@@ -9,9 +9,7 @@ const UsePost = (url, data, submit) => {
     useEffect(() => {
         if (submit) {
             axios
-                .post(url, data, {
-                    headers: { 'Content-Type': 'application/json' },
-                })
+                .post(url, data)
                 .then((response) => {
                     setResponseData(response.data);
                     setDataPending(false);
