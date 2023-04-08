@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsePost from "../service/usePost";
+import GetToday from "../utils/GetToday";
 
 const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [body, setBody] = useState('');
     const [blog_id, setBlog_id] = useState(null);
-    const today = new Date();
-    const date = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
+    const date = GetToday();
     const [isPending, setIsPending] = useState(false);
     const [submit, setSubmit] = useState(false);
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const CreateBlog = () => {
         author,
         body,
         date,
-    }, submit);
+    }, 'application/json', submit);
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const UsePost = (url, data, submit) => {
+const UsePost = (url, data, contentType, submit) => {
     const [responseData, setResponseData] = useState(null);
-    const [dataPending, setDataPending] = useState(true);
+    const [dataPending, setDataPending] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         if (submit) {
+            setDataPending(true )
             axios
-                .post(url, data)
+                .post(url, data, {headers: {
+                        'Content-Type': contentType
+                    }})
                 .then((response) => {
                     setResponseData(response.data);
                     setDataPending(false);
