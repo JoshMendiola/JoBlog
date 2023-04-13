@@ -1,23 +1,23 @@
 import React from 'react';
 import {useParams} from "react-router";
-import useFetchAll from "../service/useFetch";
 import MusicPlayer from "../components/MusicPlayer";
+import useFetch from "../service/useFetch";
 
 const Music = () => {
     const {id} = useParams()
-    const {data: song, dataPending, error} = useFetchAll('http://localhost:8000/music/'+id)
+    const {data: songData, dataPending, error} = useFetch('http://localhost:8080/song/'+id)
     return (
         <div className="music-details">
             { dataPending && <div>Loading...</div> }
             { error && <div> {error} </div> }
-            {song && (
+            {songData && (
                     <article>
-                        <h1> {song.title}</h1>
-                        <p> By: {song.author} </p>
+                        <h1> {songData.title}</h1>
+                        <p> By: {songData.author} </p>
                     </article>
                 )}
-            {song && (
-                <MusicPlayer song={song}/>
+            {songData && (
+                <MusicPlayer song={songData}/>
             )}
         </div>
     );

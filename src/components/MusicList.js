@@ -3,15 +3,16 @@ import {Link} from "react-router-dom";
 
 function MusicList(props) {
 
+
     return (
         <div>
-            {props.music.map((music) => (
-                <div className="music-preview" key = {music.id}>
-                    <Link to={`/music/${music.id}`} className={"music-list-button"} >
+            {props.music.map((song) => (
+                <div className="music-preview" key = {song.song_id}>
+                    <Link to={`/music/${song.song_id}`} className={"music-list-button"} >
                         <div>
-                                <h2>{music.title}</h2>
-                                <p>By: {music.author}</p>
-                                <img src={music.cover} alt="song cover"/>
+                                <h2>{song.title}</h2>
+                                <p>By: {song.author}</p>
+                                <img src={song.cover} alt="song cover"/>
                         </div>
                     </Link>
                 </div>
