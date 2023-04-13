@@ -23,7 +23,7 @@ const Home = () => {
         <div className="home">
             <h1>Home</h1>
             <p> Johmen is my {fav} artist/programmer !!</p>
-            <button onClick={() => handleFavClick()}>Switch!</button>
+            <button onClick={() => handleFavClick()}>Reverse!</button>
             {error && <div><h1>{error}</h1></div>}
             {blogsPending && <div>Loading...</div>}
             {blogs && <BlogList blogs={blogs}/>}
