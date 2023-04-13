@@ -12,7 +12,7 @@ function MusicList(props) {
                         <div>
                                 <h2>{song.title}</h2>
                                 <p>By: {song.author}</p>
-                                <img src={song.cover} alt="song cover"/>
+                                <img src= {`data:image/jpeg;base64,${song.cover}`} alt="song cover"/>
                         </div>
                     </Link>
                 </div>
