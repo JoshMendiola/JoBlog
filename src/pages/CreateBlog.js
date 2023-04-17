@@ -34,7 +34,7 @@ const CreateBlog = () => {
     }
 
     return (
-        <div className="create">
+        <div className="create-blog">
             <h2>Add New Blog !!</h2>
             <form onSubmit={handleSubmit}>
                 <label>Blog title:</label>
