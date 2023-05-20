@@ -8,6 +8,7 @@ import SideBar from "./components/SideBar";
 import MusicHome from "./pages/MusicHome";
 import Music from "./pages/Music";
 import UploadSong from "./pages/UploadSong";
+import Login from "./pages/Login";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/music" element={<MusicHome/>}> </Route>
                         <Route path="/music/:id" element={<Music/>}> </Route>
                         <Route path="/uploadsong" element={<UploadSong/>}> </Route>
+                        <Route path="/login" element={<Login/>}> </Route>
                         <Route path="*" element={<NotFound/>}> </Route>
                     </Routes>
                 </div>
