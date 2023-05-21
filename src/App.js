@@ -9,6 +9,7 @@ import MusicHome from "./pages/MusicHome";
 import Music from "./pages/Music";
 import UploadSong from "./pages/UploadSong";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/music/:id" element={<Music/>}> </Route>
                         <Route path="/uploadsong" element={<UploadSong/>}> </Route>
                         <Route path="/login" element={<Login/>}> </Route>
+                        <Route path="/register" element={<Register/>}> </Route>
                         <Route path="*" element={<NotFound/>}> </Route>
                     </Routes>
                 </div>

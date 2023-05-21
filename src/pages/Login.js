@@ -1,36 +1,31 @@
 import React, {useState} from 'react';
-import {Form} from "react-router-dom";
+import {Form, Link} from "react-router-dom";
 
 const Login = () => {
-    const [username, setUsername] = useState(null)
-    const [passwordOne, setPasswordOne] = useState(null)
-    const [passwordTwo, setPasswordTwo] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState(null)
 
     return (
         <div>
+            <h2>Login</h2>
             <form className="login-form">
-                <label>Username:</label>
+                <label>Email:</label>
                 <input
                     type="text"
                     required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Password</label>
+                <label>Password:</label>
                 <input
                     type="password"
                     required
-                    value={passwordOne}
-                    onChange={(e) => setPasswordOne(e.target.value)}
-                />
-                <label>Re-enter password</label>
-                <input
-                    type="password"
-                    required
-                    value={passwordTwo}
-                    onChange={(e) => setPasswordTwo(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
             </form>
+            <Link to="/register" style={{color:"blue"
+            }}>Dont have an account?</Link>
         </div>
     );
 };
