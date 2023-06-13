@@ -3,7 +3,7 @@ import useFetch from "../service/useFetch";
 import MusicList from "../components/MusicList";
 
 function MusicHome(props) {
-    const {data: music, dataPending: musicPending, error} = useFetch('http://localhost:8080/songs')
+    const {data: music, dataPending: musicPending, error} = useFetch('http://localhost:8080/noauth/songs')
     return (
         <div className="music">
             {error && <div><h1>{error}</h1></div>}
