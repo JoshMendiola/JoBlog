@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UsePost from "../service/usePost";
+import UsePost from "../service/UsePost";
 import GetToday from "../utils/GetToday";
 
 const CreateBlog = () => {

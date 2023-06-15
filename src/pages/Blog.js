@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from "react-router";
-import useFetchAll from "../service/useFetch";
+import useFetchAll from "../service/UseFetch";
 import backbutton from "../images/backbutton.png";
 import {useNavigate} from "react-router-dom";
 

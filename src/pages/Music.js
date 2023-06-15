@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router";
 import MusicPlayer from "../components/MusicPlayer";
-import useFetch from "../service/useFetch";
+import useFetch from "../service/UseFetch";
 import { useNavigate } from 'react-router-dom';
 import backbutton from "../images/backbutton.png"
 

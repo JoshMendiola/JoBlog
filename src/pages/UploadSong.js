@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import usePost from "../service/usePost";
+import usePost from "../service/UsePost";
 import GetToday from "../utils/GetToday";
 import ImageResizer from "react-image-file-resizer";
 import NoMusicImage from "../images/no-music-image.png"
